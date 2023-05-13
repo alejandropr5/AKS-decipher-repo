@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: decipher-deployment
+spec:
+  selector:
+    matchLabels:
+      app: decipher-py
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: decipher-py
+    spec:
+     containers:
+     - name: decipher-py
+       image: alejandropr5/decipher:v2
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8080
